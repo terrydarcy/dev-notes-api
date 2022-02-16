@@ -9,11 +9,9 @@ const app = express();
 app.use(cors({ origin: true }));
 
 // Routes
-const statusRoute = require("./routes/status");
 const notesRoute = require("./routes/notes");
 
 // routings
-app.use("/status", statusRoute);
-
+app.use("/notes", notesRoute);
 
 exports.devNotesAPI = functions.https.onRequest(app);

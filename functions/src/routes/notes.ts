@@ -1,7 +1,11 @@
-// const router = require("express").Router();
+const router = require("express").Router();
+console.log("test");
 
-// router.get("/status", (req: any, res: any) => {
-//     res.send("Dev Notes Server is live!!");
-//   });
+// // Require controller modules.
+let note_controller = require("../controllers/noteController");
 
-// export default router;
+router.post("/:id", note_controller.note_create_post);
+
+router.get("/", note_controller.notes_fetch_get);
+
+module.exports = router;

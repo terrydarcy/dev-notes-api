@@ -1,7 +1,7 @@
-const router = require("express").Router();
+// let router = require("express").Router();
 
-router.get("/", (req: any, res: any) => {
-    res.send("Dev Notes Server is live!!");
-  });
+// router.get("/", (req: any, res: any) => {
+//     res.send("/status/ is live!");
+//   });
 
-module.exports = router;
+// export{router};
