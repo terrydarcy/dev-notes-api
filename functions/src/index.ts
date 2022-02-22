@@ -2,18 +2,14 @@
 // https://node-postgres.com/guides/async-express
 //TODO: do not use for production
 require('dotenv').config();
-
+const cors = require("cors");
 const functions = require("firebase-functions");
 const express = require("express");
-const cors = require("cors");
-
 const app = express();
-app.use(cors({ origin: true }));
+app.use(cors({origin: true}));
 
-// Routes
 const notesRoute = require("./routes/notes");
 
 // routings
 app.use("/notes", notesRoute);
-
 exports.devNotesAPI = functions.https.onRequest(app);
