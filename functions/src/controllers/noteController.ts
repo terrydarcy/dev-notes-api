@@ -1,7 +1,7 @@
 const db = require("../db");
 interface Note {
   id: number;
-  user_id: number;
+  user_id: string;
   note_text: string;
   timestamp: Date;
 }

@@ -1,6 +1,13 @@
-const { Pool } = require('pg');
-const pool = new Pool();
+import * as fs from 'fs';
+require('dotenv').config();
 
+const { Pool } = require('pg');
+const connectionString = process.env.CONNECTION_STRING;
+const pool = new Pool({connectionString, ssl: {
+  rejectUnauthorized: false,
+  ca: fs.readFileSync("ca-certificate.crt").toString(),
+},});
+ 
 module.exports = {
   async query(text : any, params: any) {
     const start = Date.now()
