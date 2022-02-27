@@ -39,8 +39,23 @@ const getUserNotes = async (req: any, res: any, next: any) => {
         next(e.stack);
       });
   }
-
-
 };
 
-module.exports = { setNote, getUserNotes };
+const deleteNote = async (req: any, res: any, next: any) => {
+  const { id } = req.params;
+
+  if (id) {
+    const queryString ="DELETE FROM notes WHERE id = $1 RETURNING *";
+    const values = [id];
+
+    await db.query(queryString, values)
+      .then((data: any) => {
+         res.send(data.rows);
+      })
+      .catch((e: any) => {
+        next(e.stack);
+      });
+  }
+};
+
+module.exports = { setNote, getUserNotes, deleteNote };

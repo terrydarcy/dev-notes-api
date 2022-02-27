@@ -9,4 +9,6 @@ router.post("/", note_controller.setNote);
 
 router.get("/user/:id", note_controller.getUserNotes);
 
+router.delete("/:id", note_controller.deleteNote);
+
 module.exports = router;
